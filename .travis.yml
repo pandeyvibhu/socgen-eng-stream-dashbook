@@ -7,3 +7,16 @@ before_install:
 
 script:
     - docker run -e CI=true -p 80:4200 pandeyvibhu/docker-angular npm run lint
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "dashbook"
+    env: "Dashbook-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-161935811067"
+    bucket_path: "dashbook"
+    edge: true
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
