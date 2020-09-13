@@ -1,0 +1,40 @@
+<dashbook-header></dashbook-header>
+<div class="row  home">
+    <div class="col-sm-8 mt-4 ml-4">
+      <h3>Create Tiny URL Instantly</h3>
+    </div>
+    <div class="col-sm-3 login-nav">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="private-ride-tab" data-toggle="tab" href="#login" role="tab"
+                    aria-controls="login" aria-selected="true">
+                    <h4><i class="fa fa-user" aria-hidden="true"></i> Login </h4>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="shared-ride-tab" data-toggle="tab" href="#register" role="tab"
+                    aria-controls="register" aria-selected="false">
+                    <h4><i class="fa fa-users" aria-hidden="true"></i> Register </h4>
+                  </a>
+                </li>
+            </ul>
+    </div>
+    <div class="col-sm-1">
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8 mt-4 ml-4">
+      <dashbook-url-shortener></dashbook-url-shortener>
+    </div>
+    <div class="col-sm-3 login-window">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="home-tab">
+          <dashbook-login></dashbook-login>
+        </div>
+        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="profile-tab">
+          <dashbook-register></dashbook-register>
+        </div>
+      </div>
+    <div class="col-sm-1">
+    </div>
+  </div>

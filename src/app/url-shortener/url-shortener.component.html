@@ -1,0 +1,26 @@
+<div class=card>
+    <div class="card-body">
+        <form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="url"><h4>Enter URL</h4></label>
+                <textarea type="text" cols="40" rows="2" formControlName="url" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.url.errors }"></textarea>
+                <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+                    <div *ngIf="f.url.errors.required">URL is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled] = "!urlForm.valid" class="btn btn-primary">Get Tiny URL</button>
+            </div>
+            <div *ngIf = urlHash>
+                <div class="row ml-2 mt-2">
+                    <h6>Generated Hash - &nbsp; </h6>
+                    <h6 for="urlHash">{{urlHash}}</h6>
+                </div>
+                <div class="row ml-2 mt-2">
+                    <h6>Redirection URL- &nbsp; </h6>
+                    <h6>{{redirectionUrl}}</h6>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+  
+{
+	"/server": {
+		"target": "http://dashbookparent-env.eba-gbtkatyv.ap-south-1.elasticbeanstalk.com",
+		"secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/server" : ""
+    }
+	}
+}

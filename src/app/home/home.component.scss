@@ -1,0 +1,34 @@
+@import '../../styles/variables.scss';
+
+.home{
+    background: $darker-peach;
+
+    .login-nav {
+        background: $peach
+    }
+}
+
+.login-window{
+    background: $darker-peach
+}
+ul.nav {
+    > li:first-child {
+        margin-left: 20px;
+    }
+}
+
+.nav-tabs .nav-item  {
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+
+    .nav-link{
+        color: grey;
+    }
+
+    .nav-link.active {
+        background-color: transparent;
+        border-color: transparent transparent #f3f3f3;
+        color: $darkest-peach;
+        border-bottom: 3px solid !important;
+    }
+}

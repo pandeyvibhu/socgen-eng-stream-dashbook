@@ -1,0 +1,36 @@
+@import 'variables';
+@import '../../node_modules/font-awesome/scss/font-awesome.scss';
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+body {
+    background-color: $peach !important;
+    padding-bottom: 80px;
+}
+
+main {
+    .container {
+        margin-bottom: 100px;
+    }
+}
+
+.row {
+    .equal {
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+    }
+}
+
+.sticky-bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
