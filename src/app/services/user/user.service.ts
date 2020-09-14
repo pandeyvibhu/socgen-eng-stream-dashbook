@@ -9,22 +9,22 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll(): Observable<User[]> {
-        return this.http.get<User[]>(`localhost:4200/users`);
+        return this.http.get<User[]>(`server/users`);
     }
 
     getById(id: number): Observable<User> {
-        return this.http.get<User>(`localhost:4200/users/${id}`);
+        return this.http.get<User>(`server/users/${id}`);
     }
 
     register(user: User): Observable<object> {
-        return this.http.post(`localhost:4200/users/register`, user);
+        return this.http.post(`server/auth/register`, user);
     }
 
     update(user: User): Observable<object> {
-        return this.http.put(`localhost:4200/users/${user.id}`, user);
+        return this.http.put(`server/users/${user.id}`, user);
     }
 
     delete(id: number): Observable<object> {
-        return this.http.delete(`localhost:4200/users/${id}`);
+        return this.http.delete(`server/users/${id}`);
     }
 }

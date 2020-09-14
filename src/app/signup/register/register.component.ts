@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { AlertService } from 'src/app/services/notifications/alert.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-dashbook-register',
@@ -13,23 +12,33 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
+    user: User;
     loading = false;
     submitted = false;
+
+    private readonly username = 'username';
+
+    private readonly password = 'password';
+
+    private readonly firstname = 'firstname';
+
+    private readonly lastname = 'lastname';
+
+    private readonly email = 'email';
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private authenticationService: AuthService,
-        private userService: UserService,
-        private alertService: AlertService
+        private userService: UserService
     ){}
 
     ngOnInit(): void {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            firstname: ['', Validators.required],
+            lastname: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            email: ['', Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]
         });
     }
 
@@ -41,17 +50,23 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
+        this.user = new User(
+            this.registerForm.controls[this.username].value,
+            this.registerForm.controls[this.password].value,
+            this.registerForm.controls[this.firstname].value,
+            this.registerForm.controls[this.lastname].value,
+            this.registerForm.controls[this.email].value,
+        );
+
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.userService.register(this.user)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful');
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/home']);
                 },
                 error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                    this.router.navigate(['/login']);
                 });
     }
 }

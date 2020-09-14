@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AlertService } from 'src/app/services/notifications/alert.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-dashbook-login',
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-    private user: {username: string, password: string};
+    private user: User;
+
+    private readonly username = 'username';
+    private readonly password = 'password';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -32,6 +36,7 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+        this.returnUrl = '/my-home';
     }
 
     onSubmit(): void {
@@ -42,9 +47,11 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.loading = true;
-        this.user.username = this.loginForm.controls.username.value;
-        this.user.password = this.loginForm.controls.password.value;
+        this.user = new User(
+            this.loginForm.controls[this.username].value,
+            this.loginForm.controls[this.password].value
+        );
+
         this.authenticationService.login(this.user)
             .pipe(first())
             .subscribe(

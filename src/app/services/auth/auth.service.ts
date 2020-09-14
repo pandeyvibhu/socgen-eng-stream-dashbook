@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Tokens } from 'src/app/Tokens';
 import { tap, mapTo, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService{
@@ -13,8 +14,8 @@ export class AuthService{
   constructor(private http: HttpClient, public router: Router) {
   }
 
-  login(user: { username: string, password: string }): Observable<any> {
-    return this.http.post<any>('server/authenticate', user)
+  login(user: User): Observable<any> {
+    return this.http.post<any>('server/auth/login', user)
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
         mapTo(true),

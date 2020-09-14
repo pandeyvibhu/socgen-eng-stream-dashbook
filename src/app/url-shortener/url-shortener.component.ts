@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs/operators';
+import { ShortenerDetail } from '../model/shortener/shortener.details.model';
+import { ShortenerUrl } from '../model/shortener/shortener.model';
+import { ShortenerService } from '../services/shared/shortener.service';
 
 @Component({
   selector: 'app-dashbook-shortener',
@@ -12,25 +16,48 @@ export class UrlShortenerComponent implements OnInit {
   redirectionUrl: string;
   urlHash: string;
   submitted = false;
+  shortenerObj: ShortenerUrl;
+  shortenerDetail: ShortenerDetail;
+  public BACKEND_URL = 'http://dashbookparent-env.eba-gbtkatyv.ap-south-1.elasticbeanstalk.com/';
+
+  now = new Date();
+
+    private readonly url = 'url';
+
+    private readonly expirationTime = 'expirationTime';
 
   constructor(
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      private urlService: ShortenerService
   ) {}
 
   ngOnInit(): void {
       this.urlForm = this.formBuilder.group({
-          url: ['', Validators.required]
+          url: ['', Validators.required],
+          expirationTime: ['', Validators.required]
       });
   }
 
   onSubmit(): void {
-      // stop here if form is invalid
-      if (this.urlForm.invalid) {
-          return;
-      }
+    this.submitted = true;
 
-      this.submitted = true;
-      this.urlHash = '402eec4e';
-      this.redirectionUrl = 'www.exampleUrl.com/402eec4e';
+    // stop here if form is invalid
+    if (this.urlForm.invalid) {
+         return;
+    }
+
+    this.shortenerObj = new ShortenerUrl(
+    this.urlForm.controls[this.url].value,
+    this.urlForm.controls[this.expirationTime].value
+    );
+
+    this.urlService.createShortUrl(this.shortenerObj)
+    .pipe(
+        tap(urlDetail => {
+            this.shortenerDetail = urlDetail;
+            this.redirectionUrl = this.BACKEND_URL + urlDetail.shortUrl;
+        })
+    ).subscribe();
+
     }
 }

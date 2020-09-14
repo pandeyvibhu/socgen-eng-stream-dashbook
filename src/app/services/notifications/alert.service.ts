@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { Toast } from 'src/app/model/toast';
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
     private subject = new Subject<any>();
     private keepAfterNavigationChange = false;
-    private toast: {type: string, message: string};
+    private toast: Toast;
 
     constructor(private router: Router) {
         // clear alert message on route change
