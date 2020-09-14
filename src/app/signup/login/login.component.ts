@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AlertService } from 'src/app/services/notifications/alert.service';
@@ -34,9 +34,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f(): object { return this.loginForm.controls; }
-
     onSubmit(): void {
         this.submitted = true;
 
@@ -46,8 +43,8 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.user.username = this.f.username.value;
-        this.user.password = this.f.password.value;
+        this.user.username = this.loginForm.controls.username.value;
+        this.user.password = this.loginForm.controls.password.value;
         this.authenticationService.login(this.user)
             .pipe(first())
             .subscribe(

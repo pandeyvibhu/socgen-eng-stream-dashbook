@@ -33,9 +33,6 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
-    get f(): object { return this.registerForm.controls; }
-
     onSubmit(): void {
         this.submitted = true;
 
@@ -49,7 +46,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success({ message: 'Registration successful', keepAfterNavigationChange: true });
+                    this.alertService.success('Registration successful');
                     this.router.navigate(['/login']);
                 },
                 error => {

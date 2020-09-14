@@ -23,7 +23,7 @@ export class AlertService {
         });
     }
 
-    success(message: string, keepAfterNavigationChange = false): void {
+    success(message: string, keepAfterNavigationChange = false): void{
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.toast.type = 'success';
         this.toast.message = message;

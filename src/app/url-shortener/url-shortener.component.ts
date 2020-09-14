@@ -23,9 +23,6 @@ export class UrlShortenerComponent implements OnInit {
       });
   }
 
-  // convenience getter for easy access to form fields
-  get f(): object { return this.urlForm.controls; }
-
   onSubmit(): void {
       // stop here if form is invalid
       if (this.urlForm.invalid) {
