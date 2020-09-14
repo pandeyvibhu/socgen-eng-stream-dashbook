@@ -6,12 +6,11 @@ import { tap, mapTo, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {  
+export class AuthService{
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
 
   constructor(private http: HttpClient, public router: Router) {
-      console.log("Auth service");
   }
 
   login(user: { username: string, password: string }): Observable<any> {

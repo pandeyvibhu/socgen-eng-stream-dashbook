@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dashbook-navigation',
+  selector: 'app-dashbook-navigation',
   templateUrl: './app-navigation.component.html',
   styleUrls: ['./app-navigation.component.scss']
 })

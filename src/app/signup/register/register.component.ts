@@ -7,7 +7,7 @@ import { AlertService } from 'src/app/services/notifications/alert.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
-  selector: 'dashbook-register',
+  selector: 'app-dashbook-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -22,11 +22,9 @@ export class RegisterComponent implements OnInit {
         private authenticationService: AuthService,
         private userService: UserService,
         private alertService: AlertService
-    ) { 
-        // redirect to home if already logged in
-    }
+    ){}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.registerForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -36,9 +34,9 @@ export class RegisterComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get f(): object { return this.registerForm.controls; }
 
-    onSubmit() {
+    onSubmit(): void {
         this.submitted = true;
 
         // stop here if form is invalid
@@ -51,7 +49,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    this.alertService.success({ message: 'Registration successful', keepAfterNavigationChange: true });
                     this.router.navigate(['/login']);
                 },
                 error => {

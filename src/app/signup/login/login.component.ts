@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { AlertService } from 'src/app/services/notifications/alert.service';
 
 @Component({
-  selector: 'dashbook-login',
+  selector: 'app-dashbook-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -27,17 +27,17 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
-        })
+        });
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get f(): object { return this.loginForm.controls; }
 
-    onSubmit() {
+    onSubmit(): void {
         this.submitted = true;
 
         // stop here if form is invalid

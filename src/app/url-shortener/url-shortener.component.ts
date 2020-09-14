@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'dashbook-url-shortener',
+  selector: 'app-dashbook-shortener',
   templateUrl: './url-shortener.component.html',
   styleUrls: ['./url-shortener.component.scss']
 })
@@ -17,16 +17,16 @@ export class UrlShortenerComponent implements OnInit {
       private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
       this.urlForm = this.formBuilder.group({
           url: ['', Validators.required]
-      })
+      });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.urlForm.controls; }
+  get f(): object { return this.urlForm.controls; }
 
-  onSubmit() {
+  onSubmit(): void {
       // stop here if form is invalid
       if (this.urlForm.invalid) {
           return;
@@ -34,7 +34,6 @@ export class UrlShortenerComponent implements OnInit {
 
       this.submitted = true;
       this.urlHash = '402eec4e';
-      this.redirectionUrl = 'www.exampleUrl.com/402eec4e'
-      
+      this.redirectionUrl = 'www.exampleUrl.com/402eec4e';
     }
 }
