@@ -32,10 +32,10 @@ export class UrlShortenerComponent implements OnInit {
 
   ngOnInit(): void {
     const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
-      this.urlForm = this.formBuilder.group({
-          url: ['',  Validators.compose([ Validators.required, Validators.pattern(reg)])],
-          expirationTime: ['', Validators.required]
-      });
+    this.urlForm = this.formBuilder.group({
+      url: ['',  Validators.compose([ Validators.required, Validators.pattern(reg)])],
+      expirationTime: ['', Validators.required]
+    });
   }
 
   onSubmit(): void {

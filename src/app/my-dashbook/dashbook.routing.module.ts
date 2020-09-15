@@ -26,9 +26,7 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
             { path: 'groups',
               component: GroupListComponent,
               resolve: {},
-              children: [
-                
-              ]
+              children: []
             }
           ]
       },
@@ -37,5 +35,4 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
       CommonModule
     ]
   })
-export class DashbookRoutingModule{
-}
+export class DashbookRoutingModule{}

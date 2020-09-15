@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.isLoggedIn()) { 
+        if (this.authenticationService.isLoggedIn()){
             this.router.navigate(['my-home']);
         }
     }
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log(data);
-                    if(data){
+                    if (data) {
                         this.changeMonitorService.setLoginFlag(true);
                         this.router.navigate([this.returnUrl]);
 

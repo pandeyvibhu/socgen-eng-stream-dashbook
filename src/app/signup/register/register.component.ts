@@ -62,7 +62,6 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/home']);
                 },
                 error => {
-                    console.log("username already taken");
                     this.router.navigate(['/login']);
                 });
     }

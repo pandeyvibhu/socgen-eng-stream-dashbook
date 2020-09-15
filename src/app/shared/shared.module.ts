@@ -26,4 +26,4 @@ import { HeaderComponent } from './header/header.component';
     RouterModule
     ]
   })
-export class SharedModule {}
+export class SharedModule{}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'dashbook-home',
+  selector: 'app-dashbook-home',
   templateUrl: './dashbook.component.html',
   styleUrls: ['./dashbook.component.scss']
 })

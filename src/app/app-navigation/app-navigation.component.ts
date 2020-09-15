@@ -13,11 +13,10 @@ export class AppNavigationComponent implements OnInit {
   public loggedIn = false;
   private loginData = new Subject<any>();
   login = this.loginData.asObservable();
-  
   constructor(
     private authenticationService: AuthService,
     private monitorService: MonitorService
-  ) { }
+  ){}
 
   ngOnInit(): void {
 
