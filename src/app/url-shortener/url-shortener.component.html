@@ -6,6 +6,7 @@
                 <textarea type="text" cols="40" rows="2" formControlName="url" class="form-control" placeholder="www.example.com" [ngClass]="{ 'is-invalid': submitted && urlForm.controls.url.errors }"></textarea>
                 <div *ngIf="submitted && urlForm.controls.url.errors" class="invalid-feedback">
                     <div *ngIf="urlForm.controls.url.errors.required">URL is required</div>
+                    <div *ngIf="urlForm.controls.url.errors.pattern">Enter a valid URL</div>
                 </div>
             </div>
             <div class="form-group">
@@ -14,11 +15,11 @@
                 [owlDateTime]="expirationTime" [owlDateTimeTrigger]="expirationTime" placeholder="select">
                 <owl-date-time #expirationTime></owl-date-time>
                 <div *ngIf="submitted && urlForm.controls.url.errors" class="invalid-feedback">
-                    <div *ngIf="urlForm.controls.expirationTime.errors.required">Login to get short URL without expiration time</div>
+                    <div *ngIf="urlForm.controls.expirationTime.errors.required">For unlimited time? Create card from your account</div>
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary p-2 mt-3">Get Tiny URL</button>
+                <button class="btn btn-danger p-2 mt-3">Get Tiny URL</button>
             </div>
             <div *ngIf = shortenerDetail>
                 <div class="row ml-2 mt-2">

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'my-home', loadChildren: () => import('../app/my-dashbook/dashbook.module').then( m => m.DashbookModule ) },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

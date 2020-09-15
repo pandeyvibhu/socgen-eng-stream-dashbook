@@ -23,7 +23,6 @@ export class UrlShortenerComponent implements OnInit {
   now = new Date();
 
     private readonly url = 'url';
-
     private readonly expirationTime = 'expirationTime';
 
   constructor(
@@ -32,8 +31,9 @@ export class UrlShortenerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
       this.urlForm = this.formBuilder.group({
-          url: ['', Validators.required],
+          url: ['',  Validators.compose([ Validators.required, Validators.pattern(reg)])],
           expirationTime: ['', Validators.required]
       });
   }

@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { AlertService } from 'src/app/services/notifications/alert.service';
 import { User } from 'src/app/model/user';
+import { MonitorService } from 'src/app/services/shared/monitor.service';
 
 @Component({
   selector: 'app-dashbook-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
+    invaliCred = false;
     returnUrl: string;
     private user: User;
 
@@ -26,9 +28,13 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthService,
+        private changeMonitorService: MonitorService,
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
+        if (this.authenticationService.isLoggedIn()) { 
+            this.router.navigate(['my-home']);
+        }
     }
 
     ngOnInit(): void {
@@ -56,7 +62,14 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    console.log(data);
+                    if(data){
+                        this.changeMonitorService.setLoginFlag(true);
+                        this.router.navigate([this.returnUrl]);
+
+                    } else {
+                        this.invaliCred = true;
+                    }
                 },
                 error => {
                     this.alertService.error(error);

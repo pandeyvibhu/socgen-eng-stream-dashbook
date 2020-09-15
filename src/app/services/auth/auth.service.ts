@@ -27,11 +27,11 @@ export class AuthService{
 
   logout(): void {
     localStorage.removeItem(this.JWT_TOKEN);
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   isLoggedIn(): any {
-    return !!this.getJwtToken();
+    return this.getJwtToken();
   }
 
   refreshToken(): any {

@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.nav-tabs .nav-item  {
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+
+    .nav-link{
+        color: grey;
+    }
+
+    .nav-link.active {
+        background-color: transparent;
+        border-color: transparent transparent #f3f3f3;
+        color: $darkest-peach;
+        border-bottom: 3px solid !important;
+    }
+}

@@ -17,13 +17,9 @@ export class RegisterComponent implements OnInit {
     submitted = false;
 
     private readonly username = 'username';
-
     private readonly password = 'password';
-
     private readonly firstname = 'firstname';
-
     private readonly lastname = 'lastname';
-
     private readonly email = 'email';
 
     constructor(
@@ -66,6 +62,7 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/home']);
                 },
                 error => {
+                    console.log("username already taken");
                     this.router.navigate(['/login']);
                 });
     }
