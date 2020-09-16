@@ -22,13 +22,15 @@
                 <button class="btn btn-danger p-2 mt-3">Get Tiny URL</button>
             </div>
             <div *ngIf = shortenerDetail>
-                <div class="row ml-2 mt-2">
-                    <h6>Generated Hash - &nbsp; </h6>
-                    <h6 for="urlHash">{{shortenerDetail.shortUrl}}</h6>
+                <div class="row ml-1 mt-2">
+                    <h3>Generated Hash - &nbsp; </h3>
+                    <h3 for="urlHash">{{shortenerDetail.shortUrl}}</h3>
                 </div>
-                <div class="row ml-2 mt-2">
-                    <h6>Redirection URL- &nbsp; </h6>
-                    <a href = "redirectionUrl">{{redirectionUrl}}</a>
+                <div class="row ml-1">
+                    <h3>Redirection URL- &nbsp; <a href = "redirectionUrl">{{redirectionUrl}}</a></h3>
+                </div>
+                <div class="row ml-1">
+                    <button class="btn btn-outline-info" [cdkCopyToClipboard]="redirectionUrl"><i class="fa fa-file"></i>&nbsp; Copy Link</button>
                 </div>
             </div>
         </form>

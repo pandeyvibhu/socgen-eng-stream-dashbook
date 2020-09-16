@@ -18,7 +18,7 @@ export class UrlShortenerComponent implements OnInit {
   submitted = false;
   shortenerObj: ShortenerUrl;
   shortenerDetail: ShortenerDetail;
-  public BACKEND_URL = 'http://dashbookparent-env.eba-gbtkatyv.ap-south-1.elasticbeanstalk.com/';
+  public BACKEND_URL = 'http://dashbookparent-env.eba-gbtkatyv.ap-south-1.elasticbeanstalk.com/tiny/';
 
   now = new Date();
 

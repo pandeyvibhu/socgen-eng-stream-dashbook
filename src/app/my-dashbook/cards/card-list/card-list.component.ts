@@ -20,7 +20,7 @@ export class CardListComponent implements OnInit {
   public cardTitleFilter = '';
   public BACKEND_URL = 'http://dashbookparent-env.eba-gbtkatyv.ap-south-1.elasticbeanstalk.com/tiny/';
 
-  private cardSource = new Subject<any>();
+  private card: Card;
 
   constructor(
     private readonly cardService: CardService,
@@ -68,6 +68,27 @@ export class CardListComponent implements OnInit {
       this.filteredCards =  this.cards;
     }
   }
+
+  markFav(card: Card, makeFav: boolean): void {
+    this.card = new Card(
+      card.title,
+      card.status,
+      card.groupId,
+      null,
+      makeFav,
+      card.description,
+      card.id
+    );
+
+    this.cardService.modifyCard(this.card)
+    .subscribe(
+      success => {
+        this.monitorService.setCard(true);
+      },
+      err => {
+      });
+    }
+
 
   deleteCard(cardId: number): void {
     this.cardService.deleteCard(cardId).subscribe(

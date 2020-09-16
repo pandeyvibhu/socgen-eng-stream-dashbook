@@ -14,6 +14,6 @@ export class ShortenerService {
   }
 
   public createShortUrl(shortenerUrl: ShortenerUrl): Observable<ShortenerDetail>  {
-    return this.http.post<ShortenerDetail>(`server/url/save`, shortenerUrl);
+    return this.http.post<ShortenerDetail>(`server/tiny/save`, shortenerUrl);
   }
 }
