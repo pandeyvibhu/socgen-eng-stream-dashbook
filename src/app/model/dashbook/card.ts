@@ -1,10 +1,14 @@
 export class Card {
     constructor(
-        public username: string,
-        public password?: string,
-        public firstname?: string,
-        public lastname?: string,
-        public email?: string,
-        public id?: string
+      public title: string,
+      public status: string,
+      public groupId: number,
+      public url?: string,
+      public favorite?: boolean,
+      public description?: string,
+      public id?: number,
+      public shortUrl?: string,
+      public authority?: boolean,
+      public isCreator?: boolean
     ){}
 }

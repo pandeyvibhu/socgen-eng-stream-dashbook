@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashbookNavComponent } from './dashbook-nav.component';
+import { ManageGroupsComponent } from './manage-groups.component';
 
-describe('DashbookNavComponent', () => {
-  let component: DashbookNavComponent;
-  let fixture: ComponentFixture<DashbookNavComponent>;
+describe('ManageGroupsComponent', () => {
+  let component: ManageGroupsComponent;
+  let fixture: ComponentFixture<ManageGroupsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashbookNavComponent ]
+      declarations: [ ManageGroupsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashbookNavComponent);
+    fixture = TestBed.createComponent(ManageGroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

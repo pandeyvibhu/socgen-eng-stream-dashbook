@@ -35,7 +35,6 @@ export class AppNavigationComponent implements OnInit {
   public logOut(): void{
     this.authenticationService.logout();
     this.loggedIn = false;
-    console.log(localStorage.getItem('JWT_TOKEN'));
   }
 
 }

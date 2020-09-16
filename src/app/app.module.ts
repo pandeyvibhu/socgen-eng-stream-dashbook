@@ -29,7 +29,7 @@ import { DashbookModule } from './my-dashbook/dashbook.module';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    DashbookModule,
+    DashbookModule
   ],
   providers: [
     {
