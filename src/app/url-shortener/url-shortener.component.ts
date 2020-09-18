@@ -22,8 +22,8 @@ export class UrlShortenerComponent implements OnInit {
 
   now = new Date();
 
-    private readonly url = 'url';
-    private readonly expirationTime = 'expirationTime';
+  private readonly url = 'url';
+  private readonly expirationTime = 'expirationTime';
 
   constructor(
       private formBuilder: FormBuilder,

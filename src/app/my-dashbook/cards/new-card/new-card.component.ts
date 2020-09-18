@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Card } from 'src/app/model/dashbook/card';
 import { CardService } from 'src/app/services/card/card.service';
@@ -15,8 +16,7 @@ export class NewCardComponent implements OnInit {
   cardForm: FormGroup;
   submitted = false;
   private card: Card;
-  private readonly defaultGroupId = 1;
-  private readonly returnUrl = 'my-home/dashbook/cards';
+  private defaultGroupId = 0;
   private readonly url = 'url';
   private readonly title = 'title';
   private readonly favorite = 'favorite';
@@ -26,10 +26,16 @@ export class NewCardComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
-    private readonly monitorService: MonitorService
+    private readonly monitorService: MonitorService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
+
+    if (this.data) {
+      this.defaultGroupId = this.data.groupId;
+    }
+
     this.cardForm = this.formBuilder.group({
       favorite: [true],
       title: ['', Validators.required],

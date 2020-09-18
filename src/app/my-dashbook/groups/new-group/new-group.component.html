@@ -1,1 +1,22 @@
-<p>new-group works!</p>
+<div class="justify-content-center"><h1>{{cardTitle}}</h1></div>
+
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()" class="m-2">
+
+  <mat-form-field>
+    <input matInput type="text" id="title" placeholder="Title" maxlength="24" autocomplete="off" formControlName="title" required>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput type="text" id="description" placeholder="Description in 50 chars" maxlength="50" autocomplete="off" formControlName="description" required>
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput type="text" id="groupType" placeholder="Group Type" autocomplete="off" formControlName="groupType" required>
+  </mat-form-field>
+  <br/>
+  <br/>
+  <div class=" actions modal-footer">
+      <button mat-raised-button color="danger" mat-dialog-close class="mr-2">Cancel</button>
+      <button mat-raised-button color="primary"mat-dialog-close class="mr-2" type="submit" [disabled]="!groupForm.valid">Create Group</button>
+  </div>
+</form>

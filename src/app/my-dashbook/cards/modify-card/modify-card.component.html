@@ -1,6 +1,6 @@
 <div class="justify-content-center m-2"><h1>Edit Card</h1></div>
 
-<form [formGroup]="cardModifyForm" (ngSubmit)="onSubmit(data.id)" class="m-2">
+<form [formGroup]="cardModifyForm" (ngSubmit)="onSubmit(data.id, data.groupId)" class="m-2">
 
   <mat-form-field>
     <input matInput type="text" id="title" placeholder="Title" maxlength="24" autocomplete="off" formControlName="title" required>

@@ -1,10 +1,9 @@
 export class Group {
     constructor(
-        public username: string,
-        public password?: string,
-        public firstname?: string,
-        public lastname?: string,
-        public email?: string,
-        public id?: string
+        public title: string,
+        public description: string,
+        public groupType: string,
+        public id?: boolean,
+        public authority?: boolean,
     ){}
 }

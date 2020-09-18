@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTableModule } from '@angular/material/table';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { UrlShortenerComponent } from '../url-shortener/url-shortener.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,9 +20,10 @@ import { HeaderComponent } from './header/header.component';
     imports: [
       CommonModule,
       FormsModule,
+      RouterModule ,
       ReactiveFormsModule,
       OwlDateTimeModule,
-      OwlNativeDateTimeModule,
+      OwlNativeDateTimeModule
     ],
     exports: [
     HeaderComponent,
@@ -33,6 +36,8 @@ import { HeaderComponent } from './header/header.component';
     MatFormFieldModule,
     MatCheckboxModule,
     UrlShortenerComponent,
+    MatTableModule,
+    ClipboardModule,
     RouterModule
     ]
   })

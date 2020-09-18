@@ -12,6 +12,9 @@ export class MonitorService {
   private cardSubject = new Subject<any>();
   $cardSource = this.cardSubject.asObservable();
 
+  private groupSubject = new Subject<any>();
+  $groupSource = this.groupSubject.asObservable();
+
   constructor() { }
 
   setLoginFlag(login): any{
@@ -22,5 +25,8 @@ export class MonitorService {
     this.cardSubject.next(card);
   }
 
+  setGroup(group): void{
+    this.groupSubject.next(group);
+  }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { MonitorService } from '../services/shared/monitor.service';
@@ -15,8 +16,10 @@ export class AppNavigationComponent implements OnInit {
   login = this.loginData.asObservable();
   constructor(
     private authenticationService: AuthService,
-    private monitorService: MonitorService
-  ){}
+    private monitorService: MonitorService,
+    private route: ActivatedRoute,
+    private router: Router
+    ){}
 
   ngOnInit(): void {
 
@@ -37,4 +40,9 @@ export class AppNavigationComponent implements OnInit {
     this.loggedIn = false;
   }
 
+  public signIn(): void{
+    this.authenticationService.logout();
+    this.loggedIn = false;
+    this.router.navigate(['/home']);
+  }
 }

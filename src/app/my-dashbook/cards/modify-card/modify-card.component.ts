@@ -17,7 +17,7 @@ export class ModifyCardComponent implements OnInit {
   cardModifyForm: FormGroup;
   submitted = false;
   private card: Card;
-  private readonly defaultGroupId = 1;
+  private readonly defaultGroupId = 0;
   private readonly returnUrl = 'my-home/dashbook/cards';
   private readonly title = 'title';
   private readonly favorite = 'favorite';
@@ -40,7 +40,7 @@ export class ModifyCardComponent implements OnInit {
     });
   }
 
-  onSubmit(cardId: number): void {
+  onSubmit(cardId: number, groupId: number): void {
     this.submitted = true;
     // stop here if form is invalid
     if (this.cardModifyForm.invalid) {
@@ -50,7 +50,7 @@ export class ModifyCardComponent implements OnInit {
     this.card = new Card(
       this.cardModifyForm.controls[this.title].value,
       this.Active,
-      this.defaultGroupId,
+      groupId,
       null,
       this.cardModifyForm.controls[this.favorite].value,
       this.cardModifyForm.controls[this.description].value,
