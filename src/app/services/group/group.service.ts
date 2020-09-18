@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { GroupedObservable, Observable } from 'rxjs';
 import { CardList } from 'src/app/model/dashbook/card-list.model';
 import { Group } from 'src/app/model/dashbook/group';
+import { GroupAdminList } from 'src/app/model/dashbook/group-admin-list.model';
 import { GroupList } from 'src/app/model/dashbook/group-list.model';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class GroupService {
 
   public findCardsByGroupId(groupId: number): Observable<CardList> {
     return this.http.get<CardList>('/server/groups/' + groupId + '/cards');
+  }
+
+  public findAdminsByGroupId(groupId: number): Observable<GroupAdminList> {
+    return this.http.get<GroupAdminList>('/server/groups/' + groupId + '/admins');
   }
 
 }

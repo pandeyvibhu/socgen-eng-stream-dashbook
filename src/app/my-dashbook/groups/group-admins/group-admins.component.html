@@ -1,1 +1,41 @@
-<p>group-admins works!</p>
+<app-dashbook-header></app-dashbook-header>
+<div class="row mt-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div>
+            <div class="row">
+                <h1><b>Group</b>: {{group.title}}</h1>
+            </div>
+            <div class="row" mt-1 mb-1>
+                <h3>{{group.description}}</h3>
+            </div>
+            <div *ngIf = "group.authority" class="row">
+                <button title="Edit Card" class="btn btn-success mr-2" (click)="openEditGroupDialog(group)"><i class="fa fa-edit" aria-hidden="true"> Edit Group</i></button>
+                <button title="Delete Card"class="btn btn-danger" (click)="deleteGroup(group.id)"><i class="fa fa-times" aria-hidden="true"> Delete group</i></button>    
+            </div>
+        </div>
+
+        <table *ngIf = "admins" class="table table-striped mt-4">
+            <thead class="thead-dark mb-1 pb-1">
+              <tr>
+                <th class="column-title center">First Name</th>
+                <th class="column-desc">Last Name</th>
+                <th class="column-type">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let admin of admins">
+                <td class="column-title"> {{admin.firstname}} </td>
+                <td class="column-desc">{{admin.lastname}}</td>
+                <td class="column-type">{{admin.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+        
+<div *ngIf="!admins" class="box">
+  <div class="row m-2 ml-0">
+    <h1>No groups found!</h1>
+  </div>
+</div>
