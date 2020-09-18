@@ -27,12 +27,9 @@
                     <h3 for="urlHash">{{shortenerDetail.shortUrl}}</h3>
                 </div>
                 <div class="row ml-1">
-                    <h3>Redirection URL- &nbsp; <a href = "redirectionUrl">{{redirectionUrl}}</a></h3>
+                    <h3>Redirection URL- &nbsp; <a href = "{{redirectionUrl}}">{{redirectionUrl}}</a></h3>
                 </div>
             </div>
         </form>
-        <div *ngIf = shortenerDetail class="row ml-1">
-            <button class="btn btn-outline-info" [cdkCopyToClipboard]="redirectionUrl"><i class="fa fa-file"></i>&nbsp; Copy Link</button>
-        </div>
     </div>
 </div>
