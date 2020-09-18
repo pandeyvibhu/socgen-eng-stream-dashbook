@@ -27,7 +27,7 @@
                   <i class="fa fa-filter" aria-hidden="true"></i> favorites
                 </button>
                 <div class="form-check form-check-inline">
-                  <button mat-button (click)="openNewCardDialog()" class="btn btn-info">
+                  <button *ngIf = "group.authority" mat-button (click)="openNewCardDialog()" class="btn btn-info">
                     <i class="fa fa-plus" aria-hidden="true"></i> New Card
                   </button>
                 </div>
